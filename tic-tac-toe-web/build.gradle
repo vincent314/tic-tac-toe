@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://dl.bintray.com/kotlin/kotlin-eap"
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.45"
+    }
+}
+
+// apply kotlin2js
+apply plugin: 'kotlin2js'
+// apply dead code elimination
+apply plugin: 'kotlin-dce-js'
+// apply plugin
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
+group 'org.vince'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+// configure kotlin compiler
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = "$project.buildDir.path/js/${project.name}.js"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.moduleKind = 'commonjs'
+    kotlinOptions.main = "call"
+}
+
+compileTestKotlin2Js{
+    kotlinOptions.moduleKind = 'commonjs'
+}
+
+kotlinFrontend {
+    npm {
+        dependency "kotlin"
+    }
+    webpackBundle {
+        bundleName = "main"
+        contentPath = file("$project.projectDir.path/src/main/resources")
+        mode = 'development'
+    }
+}
+
+dependencies {
+//    compile project(":velotaf-common")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-js"
+
+    compile files('libs/kotlin-styled-1.0.0-pre.89-kotlin-1.3.60.jar')
+    compile "org.jetbrains.kotlinx:kotlinx-html-js:${kotlinx_html_version}"
+}
