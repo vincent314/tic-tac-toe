@@ -52,7 +52,7 @@ kotlinFrontend {
 }
 
 dependencies {
-//    compile project(":velotaf-common")
+    compile project(":tic-tac-toe-multiplatform")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
     testImplementation "org.jetbrains.kotlin:kotlin-test-js"
 
