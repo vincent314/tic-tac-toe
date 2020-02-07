@@ -39,6 +39,7 @@ kotlin {
         }
         jsMain {
             dependencies {
+                implementation project(':types-pixijs')
                 implementation kotlin('stdlib-js')
             }
         }

@@ -43,6 +43,7 @@ compileTestKotlin2Js{
 kotlinFrontend {
     npm {
         dependency "kotlin"
+        dependency "pixi.js"
     }
     webpackBundle {
         bundleName = "main"

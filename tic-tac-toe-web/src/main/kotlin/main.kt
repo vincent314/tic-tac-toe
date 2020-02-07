@@ -1,5 +1,6 @@
-import kotlin.browser.document
+import org.vince.tictactoe.Game
+import org.vince.tictactoe.draw
 
 fun main() {
-    document.write(hello("Vincent"))
+    draw(Game())
 }

@@ -1,3 +1,3 @@
 rootProject.name = 'tic-tac-toe'
-include 'tic-tac-toe-multiplatform', 'tic-tac-toe-web'
+include 'tic-tac-toe-multiplatform', 'tic-tac-toe-web', 'types-pixijs'
 
